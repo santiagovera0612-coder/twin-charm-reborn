@@ -261,6 +261,62 @@
     color: transparent;
   }
 
+  /* Animated gradient text */
+  .text-gradient-animated {
+    background: linear-gradient(110deg, var(--primary), var(--primary-glow), var(--primary));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientX 6s linear infinite;
+  }
+
+  /* Glassmorphism card */
+  .glass {
+    background: color-mix(in oklab, var(--card) 70%, transparent);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid color-mix(in oklab, var(--foreground) 8%, transparent);
+  }
+
+  /* Gradient border using mask trick */
+  .gradient-border {
+    position: relative;
+  }
+  .gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--gradient-primary);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  /* Soft glow ring on hover for cards */
+  .ring-glow {
+    transition: box-shadow 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+  }
+  .ring-glow:hover {
+    box-shadow: 0 0 0 1px color-mix(in oklab, var(--primary) 35%, transparent),
+                0 20px 50px -20px color-mix(in oklab, var(--primary) 40%, transparent);
+    border-color: color-mix(in oklab, var(--primary) 35%, transparent);
+  }
+
+  /* Hide scrollbar utility (works everywhere) */
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Subtle dotted bg */
+  .bg-dotted {
+    background-image: radial-gradient(color-mix(in oklab, var(--foreground) 10%, transparent) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
   .animate-fade-up {
     animation: fadeUp 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
     will-change: transform, opacity;
