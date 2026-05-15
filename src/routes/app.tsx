@@ -63,13 +63,13 @@ function AppLayout() {
   const sidebarContent = (
     <>
       <Link to="/" className="flex h-16 items-center gap-2 border-b border-border px-5">
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-primary shadow-glow">
+        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-primary shadow-glow animate-glow-pulse">
           <Sparkles className="h-4 w-4 text-primary-foreground" />
         </div>
         <span className="font-display text-lg font-bold tracking-tight">clerivo</span>
       </Link>
 
-      <nav className="flex-1 overflow-y-auto px-3 py-5">
+      <nav className="scrollbar-hide flex-1 overflow-y-auto px-3 py-5">
         <p className="mb-2 px-3 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">Principal</p>
         <ul className="space-y-1">
           {navMain.map(item => {
