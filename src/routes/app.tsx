@@ -235,8 +235,8 @@ function AppLayout() {
                 }`}
               >
                 <span
-                  className={`flex h-8 w-12 items-center justify-center rounded-full transition ${
-                    active ? "bg-primary/10" : ""
+                  className={`flex h-9 w-14 items-center justify-center rounded-full transition-all duration-300 ${
+                    active ? "bg-gradient-primary text-primary-foreground shadow-glow scale-105" : ""
                   }`}
                 >
                   <item.icon className="h-4 w-4" />
