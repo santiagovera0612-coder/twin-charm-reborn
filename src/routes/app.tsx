@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import {
   LayoutDashboard, MessageSquare, Sparkles, Bot, Inbox, BarChart3,
-  Settings, Plug, GraduationCap, Zap, CreditCard, Users, HelpCircle, Bell, Search, LogOut, Menu, X,
+  Settings, Plug, GraduationCap, Zap, CreditCard, Users, HelpCircle, Bell, Search, LogOut, Menu, X, Tags,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -22,6 +22,8 @@ export const Route = createFileRoute("/app")({
 const navMain = [
   { to: "/app/dashboard", icon: LayoutDashboard, label: "Dashboard" },
   { to: "/app/chats", icon: Inbox, label: "Chats" },
+  { to: "/app/crm", icon: Users, label: "CRM" },
+  { to: "/app/smart-tags", icon: Tags, label: "Smart Tags" },
   { to: "/app/metrics", icon: BarChart3, label: "Métricas" },
   { to: "/app/create", icon: Sparkles, label: "Crear agente" },
   { to: "/app/simulator", icon: MessageSquare, label: "Simulador" },
@@ -36,6 +38,8 @@ const navSoon = [
   { icon: Zap, label: "Automatizaciones" },
   { icon: Users, label: "Equipo" },
 ];
+
+
 
 function AppLayout() {
   const path = useRouterState({ select: (s) => s.location.pathname });

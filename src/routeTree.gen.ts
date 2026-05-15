@@ -13,11 +13,13 @@ import { Route as RegisterRouteImport } from './routes/register'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppSmartTagsRouteImport } from './routes/app.smart-tags'
 import { Route as AppSimulatorRouteImport } from './routes/app.simulator'
 import { Route as AppSettingsRouteImport } from './routes/app.settings'
 import { Route as AppMetricsRouteImport } from './routes/app.metrics'
 import { Route as AppIntegrationsRouteImport } from './routes/app.integrations'
 import { Route as AppDashboardRouteImport } from './routes/app.dashboard'
+import { Route as AppCrmRouteImport } from './routes/app.crm'
 import { Route as AppCreateRouteImport } from './routes/app.create'
 import { Route as AppChatsRouteImport } from './routes/app.chats'
 import { Route as AppBillingRouteImport } from './routes/app.billing'
@@ -41,6 +43,11 @@ const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AppSmartTagsRoute = AppSmartTagsRouteImport.update({
+  id: '/smart-tags',
+  path: '/smart-tags',
+  getParentRoute: () => AppRoute,
 } as any)
 const AppSimulatorRoute = AppSimulatorRouteImport.update({
   id: '/simulator',
@@ -67,6 +74,11 @@ const AppDashboardRoute = AppDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => AppRoute,
 } as any)
+const AppCrmRoute = AppCrmRouteImport.update({
+  id: '/crm',
+  path: '/crm',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppCreateRoute = AppCreateRouteImport.update({
   id: '/create',
   path: '/create',
@@ -91,11 +103,13 @@ export interface FileRoutesByFullPath {
   '/app/billing': typeof AppBillingRoute
   '/app/chats': typeof AppChatsRoute
   '/app/create': typeof AppCreateRoute
+  '/app/crm': typeof AppCrmRoute
   '/app/dashboard': typeof AppDashboardRoute
   '/app/integrations': typeof AppIntegrationsRoute
   '/app/metrics': typeof AppMetricsRoute
   '/app/settings': typeof AppSettingsRoute
   '/app/simulator': typeof AppSimulatorRoute
+  '/app/smart-tags': typeof AppSmartTagsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -105,11 +119,13 @@ export interface FileRoutesByTo {
   '/app/billing': typeof AppBillingRoute
   '/app/chats': typeof AppChatsRoute
   '/app/create': typeof AppCreateRoute
+  '/app/crm': typeof AppCrmRoute
   '/app/dashboard': typeof AppDashboardRoute
   '/app/integrations': typeof AppIntegrationsRoute
   '/app/metrics': typeof AppMetricsRoute
   '/app/settings': typeof AppSettingsRoute
   '/app/simulator': typeof AppSimulatorRoute
+  '/app/smart-tags': typeof AppSmartTagsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -120,11 +136,13 @@ export interface FileRoutesById {
   '/app/billing': typeof AppBillingRoute
   '/app/chats': typeof AppChatsRoute
   '/app/create': typeof AppCreateRoute
+  '/app/crm': typeof AppCrmRoute
   '/app/dashboard': typeof AppDashboardRoute
   '/app/integrations': typeof AppIntegrationsRoute
   '/app/metrics': typeof AppMetricsRoute
   '/app/settings': typeof AppSettingsRoute
   '/app/simulator': typeof AppSimulatorRoute
+  '/app/smart-tags': typeof AppSmartTagsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -136,11 +154,13 @@ export interface FileRouteTypes {
     | '/app/billing'
     | '/app/chats'
     | '/app/create'
+    | '/app/crm'
     | '/app/dashboard'
     | '/app/integrations'
     | '/app/metrics'
     | '/app/settings'
     | '/app/simulator'
+    | '/app/smart-tags'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -150,11 +170,13 @@ export interface FileRouteTypes {
     | '/app/billing'
     | '/app/chats'
     | '/app/create'
+    | '/app/crm'
     | '/app/dashboard'
     | '/app/integrations'
     | '/app/metrics'
     | '/app/settings'
     | '/app/simulator'
+    | '/app/smart-tags'
   id:
     | '__root__'
     | '/'
@@ -164,11 +186,13 @@ export interface FileRouteTypes {
     | '/app/billing'
     | '/app/chats'
     | '/app/create'
+    | '/app/crm'
     | '/app/dashboard'
     | '/app/integrations'
     | '/app/metrics'
     | '/app/settings'
     | '/app/simulator'
+    | '/app/smart-tags'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -208,6 +232,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app/smart-tags': {
+      id: '/app/smart-tags'
+      path: '/smart-tags'
+      fullPath: '/app/smart-tags'
+      preLoaderRoute: typeof AppSmartTagsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/simulator': {
       id: '/app/simulator'
       path: '/simulator'
@@ -243,6 +274,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppDashboardRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/crm': {
+      id: '/app/crm'
+      path: '/crm'
+      fullPath: '/app/crm'
+      preLoaderRoute: typeof AppCrmRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/create': {
       id: '/app/create'
       path: '/create'
@@ -271,22 +309,26 @@ interface AppRouteChildren {
   AppBillingRoute: typeof AppBillingRoute
   AppChatsRoute: typeof AppChatsRoute
   AppCreateRoute: typeof AppCreateRoute
+  AppCrmRoute: typeof AppCrmRoute
   AppDashboardRoute: typeof AppDashboardRoute
   AppIntegrationsRoute: typeof AppIntegrationsRoute
   AppMetricsRoute: typeof AppMetricsRoute
   AppSettingsRoute: typeof AppSettingsRoute
   AppSimulatorRoute: typeof AppSimulatorRoute
+  AppSmartTagsRoute: typeof AppSmartTagsRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
   AppBillingRoute: AppBillingRoute,
   AppChatsRoute: AppChatsRoute,
   AppCreateRoute: AppCreateRoute,
+  AppCrmRoute: AppCrmRoute,
   AppDashboardRoute: AppDashboardRoute,
   AppIntegrationsRoute: AppIntegrationsRoute,
   AppMetricsRoute: AppMetricsRoute,
   AppSettingsRoute: AppSettingsRoute,
   AppSimulatorRoute: AppSimulatorRoute,
+  AppSmartTagsRoute: AppSmartTagsRoute,
 }
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
@@ -300,13 +342,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
