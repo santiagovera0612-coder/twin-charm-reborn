@@ -22,12 +22,21 @@ export const Route = createFileRoute("/app")({
 const navMain = [
   { to: "/app/dashboard", icon: LayoutDashboard, label: "Dashboard" },
   { to: "/app/chats", icon: Inbox, label: "Chats" },
+  { to: "/app/crm", icon: Users, label: "CRM" },
+  { to: "/app/smart-tags", icon: Tags, label: "Smart Tags" },
   { to: "/app/metrics", icon: BarChart3, label: "Métricas" },
   { to: "/app/create", icon: Sparkles, label: "Crear agente" },
   { to: "/app/simulator", icon: MessageSquare, label: "Simulador" },
   { to: "/app/integrations", icon: Plug, label: "Integraciones" },
   { to: "/app/billing", icon: CreditCard, label: "Facturación" },
   { to: "/app/settings", icon: Settings, label: "Configuración" },
+];
+
+const navSoon = [
+  { icon: Inbox, label: "Bandeja" },
+  { icon: GraduationCap, label: "Entrenamiento" },
+  { icon: Zap, label: "Automatizaciones" },
+  { icon: Users, label: "Equipo" },
 ];
 
 const navSoon = [
