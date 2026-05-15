@@ -39,12 +39,7 @@ const navSoon = [
   { icon: Users, label: "Equipo" },
 ];
 
-const navSoon = [
-  { icon: Inbox, label: "Bandeja" },
-  { icon: GraduationCap, label: "Entrenamiento" },
-  { icon: Zap, label: "Automatizaciones" },
-  { icon: Users, label: "Equipo" },
-];
+
 
 function AppLayout() {
   const path = useRouterState({ select: (s) => s.location.pathname });
