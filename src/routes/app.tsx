@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import {
   LayoutDashboard, MessageSquare, Sparkles, Bot, Inbox, BarChart3,
-  Settings, Plug, GraduationCap, Zap, CreditCard, Users, HelpCircle, Bell, Search, LogOut, Menu, X,
+  Settings, Plug, GraduationCap, Zap, CreditCard, Users, HelpCircle, Bell, Search, LogOut, Menu, X, Tags,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { ThemeToggle } from "@/components/theme-toggle";
