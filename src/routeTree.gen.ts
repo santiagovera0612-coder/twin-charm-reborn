@@ -13,6 +13,7 @@ import { Route as RegisterRouteImport } from './routes/register'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppSmartTagsRouteImport } from './routes/app.smart-tags'
 import { Route as AppSimulatorRouteImport } from './routes/app.simulator'
 import { Route as AppSettingsRouteImport } from './routes/app.settings'
 import { Route as AppMetricsRouteImport } from './routes/app.metrics'
@@ -42,6 +43,11 @@ const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AppSmartTagsRoute = AppSmartTagsRouteImport.update({
+  id: '/smart-tags',
+  path: '/smart-tags',
+  getParentRoute: () => AppRoute,
 } as any)
 const AppSimulatorRoute = AppSimulatorRouteImport.update({
   id: '/simulator',
@@ -103,6 +109,7 @@ export interface FileRoutesByFullPath {
   '/app/metrics': typeof AppMetricsRoute
   '/app/settings': typeof AppSettingsRoute
   '/app/simulator': typeof AppSimulatorRoute
+  '/app/smart-tags': typeof AppSmartTagsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -118,6 +125,7 @@ export interface FileRoutesByTo {
   '/app/metrics': typeof AppMetricsRoute
   '/app/settings': typeof AppSettingsRoute
   '/app/simulator': typeof AppSimulatorRoute
+  '/app/smart-tags': typeof AppSmartTagsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -134,6 +142,7 @@ export interface FileRoutesById {
   '/app/metrics': typeof AppMetricsRoute
   '/app/settings': typeof AppSettingsRoute
   '/app/simulator': typeof AppSimulatorRoute
+  '/app/smart-tags': typeof AppSmartTagsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -151,6 +160,7 @@ export interface FileRouteTypes {
     | '/app/metrics'
     | '/app/settings'
     | '/app/simulator'
+    | '/app/smart-tags'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -166,6 +176,7 @@ export interface FileRouteTypes {
     | '/app/metrics'
     | '/app/settings'
     | '/app/simulator'
+    | '/app/smart-tags'
   id:
     | '__root__'
     | '/'
@@ -181,6 +192,7 @@ export interface FileRouteTypes {
     | '/app/metrics'
     | '/app/settings'
     | '/app/simulator'
+    | '/app/smart-tags'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -219,6 +231,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/app/smart-tags': {
+      id: '/app/smart-tags'
+      path: '/smart-tags'
+      fullPath: '/app/smart-tags'
+      preLoaderRoute: typeof AppSmartTagsRouteImport
+      parentRoute: typeof AppRoute
     }
     '/app/simulator': {
       id: '/app/simulator'
@@ -296,6 +315,7 @@ interface AppRouteChildren {
   AppMetricsRoute: typeof AppMetricsRoute
   AppSettingsRoute: typeof AppSettingsRoute
   AppSimulatorRoute: typeof AppSimulatorRoute
+  AppSmartTagsRoute: typeof AppSmartTagsRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
@@ -308,6 +328,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppMetricsRoute: AppMetricsRoute,
   AppSettingsRoute: AppSettingsRoute,
   AppSimulatorRoute: AppSimulatorRoute,
+  AppSmartTagsRoute: AppSmartTagsRoute,
 }
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
