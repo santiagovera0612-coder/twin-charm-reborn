@@ -18,6 +18,7 @@ import { Route as AppSettingsRouteImport } from './routes/app.settings'
 import { Route as AppMetricsRouteImport } from './routes/app.metrics'
 import { Route as AppIntegrationsRouteImport } from './routes/app.integrations'
 import { Route as AppDashboardRouteImport } from './routes/app.dashboard'
+import { Route as AppCrmRouteImport } from './routes/app.crm'
 import { Route as AppCreateRouteImport } from './routes/app.create'
 import { Route as AppChatsRouteImport } from './routes/app.chats'
 import { Route as AppBillingRouteImport } from './routes/app.billing'
@@ -67,6 +68,11 @@ const AppDashboardRoute = AppDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => AppRoute,
 } as any)
+const AppCrmRoute = AppCrmRouteImport.update({
+  id: '/crm',
+  path: '/crm',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppCreateRoute = AppCreateRouteImport.update({
   id: '/create',
   path: '/create',
@@ -91,6 +97,7 @@ export interface FileRoutesByFullPath {
   '/app/billing': typeof AppBillingRoute
   '/app/chats': typeof AppChatsRoute
   '/app/create': typeof AppCreateRoute
+  '/app/crm': typeof AppCrmRoute
   '/app/dashboard': typeof AppDashboardRoute
   '/app/integrations': typeof AppIntegrationsRoute
   '/app/metrics': typeof AppMetricsRoute
@@ -105,6 +112,7 @@ export interface FileRoutesByTo {
   '/app/billing': typeof AppBillingRoute
   '/app/chats': typeof AppChatsRoute
   '/app/create': typeof AppCreateRoute
+  '/app/crm': typeof AppCrmRoute
   '/app/dashboard': typeof AppDashboardRoute
   '/app/integrations': typeof AppIntegrationsRoute
   '/app/metrics': typeof AppMetricsRoute
@@ -120,6 +128,7 @@ export interface FileRoutesById {
   '/app/billing': typeof AppBillingRoute
   '/app/chats': typeof AppChatsRoute
   '/app/create': typeof AppCreateRoute
+  '/app/crm': typeof AppCrmRoute
   '/app/dashboard': typeof AppDashboardRoute
   '/app/integrations': typeof AppIntegrationsRoute
   '/app/metrics': typeof AppMetricsRoute
@@ -136,6 +145,7 @@ export interface FileRouteTypes {
     | '/app/billing'
     | '/app/chats'
     | '/app/create'
+    | '/app/crm'
     | '/app/dashboard'
     | '/app/integrations'
     | '/app/metrics'
@@ -150,6 +160,7 @@ export interface FileRouteTypes {
     | '/app/billing'
     | '/app/chats'
     | '/app/create'
+    | '/app/crm'
     | '/app/dashboard'
     | '/app/integrations'
     | '/app/metrics'
@@ -164,6 +175,7 @@ export interface FileRouteTypes {
     | '/app/billing'
     | '/app/chats'
     | '/app/create'
+    | '/app/crm'
     | '/app/dashboard'
     | '/app/integrations'
     | '/app/metrics'
@@ -243,6 +255,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppDashboardRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/crm': {
+      id: '/app/crm'
+      path: '/crm'
+      fullPath: '/app/crm'
+      preLoaderRoute: typeof AppCrmRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/create': {
       id: '/app/create'
       path: '/create'
@@ -271,6 +290,7 @@ interface AppRouteChildren {
   AppBillingRoute: typeof AppBillingRoute
   AppChatsRoute: typeof AppChatsRoute
   AppCreateRoute: typeof AppCreateRoute
+  AppCrmRoute: typeof AppCrmRoute
   AppDashboardRoute: typeof AppDashboardRoute
   AppIntegrationsRoute: typeof AppIntegrationsRoute
   AppMetricsRoute: typeof AppMetricsRoute
@@ -282,6 +302,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppBillingRoute: AppBillingRoute,
   AppChatsRoute: AppChatsRoute,
   AppCreateRoute: AppCreateRoute,
+  AppCrmRoute: AppCrmRoute,
   AppDashboardRoute: AppDashboardRoute,
   AppIntegrationsRoute: AppIntegrationsRoute,
   AppMetricsRoute: AppMetricsRoute,
