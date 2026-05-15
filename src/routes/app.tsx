@@ -63,13 +63,13 @@ function AppLayout() {
   const sidebarContent = (
     <>
       <Link to="/" className="flex h-16 items-center gap-2 border-b border-border px-5">
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-primary shadow-glow">
+        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-primary shadow-glow animate-glow-pulse">
           <Sparkles className="h-4 w-4 text-primary-foreground" />
         </div>
         <span className="font-display text-lg font-bold tracking-tight">clerivo</span>
       </Link>
 
-      <nav className="flex-1 overflow-y-auto px-3 py-5">
+      <nav className="scrollbar-hide flex-1 overflow-y-auto px-3 py-5">
         <p className="mb-2 px-3 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">Principal</p>
         <ul className="space-y-1">
           {navMain.map(item => {
@@ -78,13 +78,14 @@ function AppLayout() {
               <li key={item.to}>
                 <Link
                   to={item.to}
-                  className={`group flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition ${
+                  className={`group relative flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200 ${
                     active
-                      ? "bg-gradient-primary text-primary-foreground shadow-glow"
-                      : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                      ? "bg-gradient-primary text-primary-foreground shadow-glow scale-[1.02]"
+                      : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground hover:translate-x-0.5"
                   }`}
                 >
-                  <item.icon className="h-4 w-4" />
+                  {active && <span className="absolute left-0 top-1/2 h-5 w-0.5 -translate-x-3 -translate-y-1/2 rounded-full bg-primary" />}
+                  <item.icon className={`h-4 w-4 transition-transform duration-200 ${active ? "" : "group-hover:scale-110"}`} />
                   {item.label}
                 </Link>
               </li>
@@ -234,8 +235,8 @@ function AppLayout() {
                 }`}
               >
                 <span
-                  className={`flex h-8 w-12 items-center justify-center rounded-full transition ${
-                    active ? "bg-primary/10" : ""
+                  className={`flex h-9 w-14 items-center justify-center rounded-full transition-all duration-300 ${
+                    active ? "bg-gradient-primary text-primary-foreground shadow-glow scale-105" : ""
                   }`}
                 >
                   <item.icon className="h-4 w-4" />
