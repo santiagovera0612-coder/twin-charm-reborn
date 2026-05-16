@@ -191,9 +191,9 @@ function MetricsPage() {
             </div>
           </div>
           <div className="mt-2 grid grid-cols-3 gap-2 text-center text-xs">
-            <Mini label="😍 Positivo" value="78%" />
-            <Mini label="😐 Neutro" value="16%" />
-            <Mini label="😞 Negativo" value="6%" />
+            <Mini label="Positivo" value="78%" />
+            <Mini label="Neutro" value="16%" />
+            <Mini label="Negativo" value="6%" />
           </div>
         </Card>
 

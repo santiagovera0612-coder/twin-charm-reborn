@@ -1,13 +1,35 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
-  Users, MessageSquare, TrendingUp, DollarSign, Clock, Sparkles,
-  ArrowUpRight, ArrowRight, Bot, Instagram, MessageCircle, Globe, Facebook,
+  Users,
+  MessageSquare,
+  TrendingUp,
+  DollarSign,
+  Clock,
+  Sparkles,
+  ArrowUpRight,
+  ArrowRight,
+  Bot,
+  Instagram,
+  MessageCircle,
+  Globe,
+  Facebook,
   AlertCircle,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import {
-  AreaChart, Area, BarChart, Bar, LineChart, Line, PieChart, Pie, Cell,
-  XAxis, YAxis, ResponsiveContainer, Tooltip,
+  AreaChart,
+  Area,
+  BarChart,
+  Bar,
+  LineChart,
+  Line,
+  PieChart,
+  Pie,
+  Cell,
+  XAxis,
+  YAxis,
+  ResponsiveContainer,
+  Tooltip,
 } from "recharts";
 
 export const Route = createFileRoute("/app/dashboard")({
@@ -33,7 +55,10 @@ const channels = [
 ];
 
 const salesData = [
-  { d: "S1", v: 4200 }, { d: "S2", v: 5100 }, { d: "S3", v: 6800 }, { d: "S4", v: 8200 },
+  { d: "S1", v: 4200 },
+  { d: "S2", v: 5100 },
+  { d: "S3", v: 6800 },
+  { d: "S4", v: 8200 },
 ];
 
 function Dashboard() {
@@ -41,17 +66,22 @@ function Dashboard() {
     <div className="space-y-6 p-4 sm:p-6 lg:p-8">
       <div className="flex flex-wrap items-end justify-between gap-4 animate-fade-up">
         <div>
-          <p className="text-sm text-muted-foreground">Bienvenida, Mariana 👋</p>
-          <h1 className="mt-1 font-display text-3xl font-bold tracking-tight">Resumen de hoy</h1>
+          <p className="text-sm text-muted-foreground">Workspace · Mueblería Norte</p>
+          <h1 className="mt-1 font-display text-3xl font-bold tracking-normal">
+            Centro de control
+          </h1>
+          <p className="mt-1 max-w-2xl text-sm text-muted-foreground">
+            Estado comercial, conversaciones activas y oportunidades detectadas por tus agentes.
+          </p>
         </div>
         <div className="flex items-center gap-2">
-          <div className="rounded-lg border border-border bg-card px-3 py-1.5 text-sm">
+          <div className="surface-card px-3 py-2 text-sm">
             <span className="text-muted-foreground">Agente activo:</span>{" "}
             <span className="font-semibold">Sofía IA</span>
           </div>
           <Link
             to="/app/simulator"
-            className="inline-flex h-9 items-center gap-2 rounded-lg bg-gradient-primary px-4 text-sm font-medium text-primary-foreground shadow-glow transition hover:opacity-95 hover-lift"
+            className="inline-flex min-h-10 items-center gap-2 rounded-lg bg-gradient-primary px-4 text-sm font-semibold text-primary-foreground shadow-glow transition hover:opacity-95 hover-lift"
           >
             Probar agente <ArrowRight className="h-3.5 w-3.5" />
           </Link>
@@ -59,12 +89,17 @@ function Dashboard() {
       </div>
 
       {/* Usage alert */}
-      <div className="flex items-center gap-3 rounded-xl border border-warning/30 bg-warning/10 px-4 py-3 text-sm animate-fade-up" style={{ animationDelay: "0.04s" }}>
+      <div
+        className="flex flex-wrap items-center gap-3 surface-card px-4 py-3 text-sm animate-fade-up"
+        style={{ animationDelay: "0.04s" }}
+      >
         <AlertCircle className="h-4 w-4 text-warning" />
         <p className="flex-1">
           Usaste <b>4.250 de 10.000</b> mensajes este mes. Te avisaremos al 80% del límite.
         </p>
-        <button className="text-xs font-semibold text-primary hover:underline">Ver plan</button>
+        <button className="min-h-9 rounded-lg border border-border bg-background px-3 text-xs font-semibold text-primary hover:bg-muted">
+          Ver plan
+        </button>
       </div>
 
       {/* KPIs */}
@@ -99,11 +134,40 @@ function Dashboard() {
                     <stop offset="100%" stopColor="oklch(0.72 0.16 280)" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <XAxis dataKey="d" stroke="oklch(0.55 0.02 265)" fontSize={11} tickLine={false} axisLine={false} />
-                <YAxis stroke="oklch(0.55 0.02 265)" fontSize={11} tickLine={false} axisLine={false} />
-                <Tooltip contentStyle={{ borderRadius: 12, border: "1px solid oklch(0.92 0.008 270)", fontSize: 12 }} />
-                <Area type="monotone" dataKey="chats" stroke="oklch(0.52 0.22 277)" strokeWidth={2} fill="url(#g1)" />
-                <Area type="monotone" dataKey="leads" stroke="oklch(0.72 0.16 280)" strokeWidth={2} fill="url(#g2)" />
+                <XAxis
+                  dataKey="d"
+                  stroke="oklch(0.55 0.02 265)"
+                  fontSize={11}
+                  tickLine={false}
+                  axisLine={false}
+                />
+                <YAxis
+                  stroke="oklch(0.55 0.02 265)"
+                  fontSize={11}
+                  tickLine={false}
+                  axisLine={false}
+                />
+                <Tooltip
+                  contentStyle={{
+                    borderRadius: 12,
+                    border: "1px solid oklch(0.92 0.008 270)",
+                    fontSize: 12,
+                  }}
+                />
+                <Area
+                  type="monotone"
+                  dataKey="chats"
+                  stroke="oklch(0.52 0.22 277)"
+                  strokeWidth={2}
+                  fill="url(#g1)"
+                />
+                <Area
+                  type="monotone"
+                  dataKey="leads"
+                  stroke="oklch(0.72 0.16 280)"
+                  strokeWidth={2}
+                  fill="url(#g2)"
+                />
               </AreaChart>
             </ResponsiveContainer>
           </div>
@@ -115,14 +179,22 @@ function Dashboard() {
             <div className="h-40 w-40">
               <ResponsiveContainer>
                 <PieChart>
-                  <Pie data={channels} dataKey="value" innerRadius={45} outerRadius={70} paddingAngle={3}>
-                    {channels.map((c, i) => <Cell key={i} fill={c.color} />)}
+                  <Pie
+                    data={channels}
+                    dataKey="value"
+                    innerRadius={45}
+                    outerRadius={70}
+                    paddingAngle={3}
+                  >
+                    {channels.map((c, i) => (
+                      <Cell key={i} fill={c.color} />
+                    ))}
                   </Pie>
                 </PieChart>
               </ResponsiveContainer>
             </div>
             <div className="flex-1 space-y-2">
-              {channels.map(c => (
+              {channels.map((c) => (
                 <div key={c.name} className="flex items-center gap-2 text-xs">
                   <span className="h-2 w-2 rounded-full" style={{ background: c.color }} />
                   <c.icon className="h-3.5 w-3.5 text-muted-foreground" />
@@ -142,9 +214,26 @@ function Dashboard() {
           <div className="h-52">
             <ResponsiveContainer>
               <BarChart data={salesData} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
-                <XAxis dataKey="d" stroke="oklch(0.55 0.02 265)" fontSize={11} tickLine={false} axisLine={false} />
-                <YAxis stroke="oklch(0.55 0.02 265)" fontSize={11} tickLine={false} axisLine={false} />
-                <Tooltip contentStyle={{ borderRadius: 12, border: "1px solid oklch(0.92 0.008 270)", fontSize: 12 }} />
+                <XAxis
+                  dataKey="d"
+                  stroke="oklch(0.55 0.02 265)"
+                  fontSize={11}
+                  tickLine={false}
+                  axisLine={false}
+                />
+                <YAxis
+                  stroke="oklch(0.55 0.02 265)"
+                  fontSize={11}
+                  tickLine={false}
+                  axisLine={false}
+                />
+                <Tooltip
+                  contentStyle={{
+                    borderRadius: 12,
+                    border: "1px solid oklch(0.92 0.008 270)",
+                    fontSize: 12,
+                  }}
+                />
                 <Bar dataKey="v" fill="oklch(0.52 0.22 277)" radius={[8, 8, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
@@ -156,10 +245,21 @@ function Dashboard() {
           <div className="flex flex-col items-center justify-center py-4">
             <div className="relative h-32 w-32">
               <svg className="h-full w-full -rotate-90">
-                <circle cx="64" cy="64" r="54" stroke="oklch(0.92 0.008 270)" strokeWidth="10" fill="none" />
                 <circle
-                  cx="64" cy="64" r="54"
-                  stroke="url(#scoreGrad)" strokeWidth="10" fill="none"
+                  cx="64"
+                  cy="64"
+                  r="54"
+                  stroke="oklch(0.92 0.008 270)"
+                  strokeWidth="10"
+                  fill="none"
+                />
+                <circle
+                  cx="64"
+                  cy="64"
+                  r="54"
+                  stroke="url(#scoreGrad)"
+                  strokeWidth="10"
+                  fill="none"
                   strokeDasharray={`${2 * Math.PI * 54}`}
                   strokeDashoffset={`${2 * Math.PI * 54 * (1 - 0.87)}`}
                   strokeLinecap="round"
@@ -176,7 +276,9 @@ function Dashboard() {
                 <span className="text-[10px] uppercase text-muted-foreground">excelente</span>
               </div>
             </div>
-            <p className="mt-3 text-center text-xs text-muted-foreground">3 sugerencias de mejora disponibles</p>
+            <p className="mt-3 text-center text-xs text-muted-foreground">
+              3 sugerencias de mejora disponibles
+            </p>
           </div>
         </Card>
 
@@ -195,7 +297,10 @@ function Dashboard() {
                   <span className="text-muted-foreground">{s.v.toLocaleString("es-AR")}</span>
                 </div>
                 <div className="h-2.5 overflow-hidden rounded-full bg-muted">
-                  <div className="h-full rounded-full bg-gradient-primary transition-all" style={{ width: `${s.w}%` }} />
+                  <div
+                    className="h-full rounded-full bg-gradient-primary transition-all"
+                    style={{ width: `${s.w}%` }}
+                  />
                 </div>
               </div>
             ))}
@@ -206,18 +311,33 @@ function Dashboard() {
       {/* AI Suggestions */}
       <Card>
         <CardHeader
-          title={<><Sparkles className="inline h-4 w-4 text-primary" /> Sugerencias inteligentes</>}
+          title={
+            <>
+              <Sparkles className="inline h-4 w-4 text-primary" /> Sugerencias inteligentes
+            </>
+          }
           subtitle="Mejoras detectadas por la IA para Sofía"
         />
         <div className="grid gap-3 md:grid-cols-3 stagger-children">
           {[
-            { tag: "Conocimiento", text: "Detecté 14 preguntas sobre devoluciones sin respuesta. Cargar política aumentaría el cierre 12%." },
-            { tag: "Tono", text: "Las respuestas en Instagram tienen menor engagement. Sugiero un tono más casual para ese canal." },
-            { tag: "Derivación", text: "8 leads calientes no se derivaron al equipo. Activá la regla de derivación automática." },
+            {
+              tag: "Conocimiento",
+              text: "Detecté 14 preguntas sobre devoluciones sin respuesta. Cargar política aumentaría el cierre 12%.",
+            },
+            {
+              tag: "Tono",
+              text: "Las respuestas en Instagram tienen menor engagement. Sugiero un tono más casual para ese canal.",
+            },
+            {
+              tag: "Derivación",
+              text: "8 leads calientes no se derivaron al equipo. Activá la regla de derivación automática.",
+            },
           ].map((s, i) => (
-            <div key={i} className="rounded-xl border border-border bg-surface p-4 hover-lift">
-              <Badge variant="secondary" className="mb-2 bg-accent text-accent-foreground">{s.tag}</Badge>
-              <p className="text-sm leading-relaxed">{s.text}</p>
+            <div key={i} className="rounded-lg border border-border bg-surface p-4 hover-lift">
+              <Badge variant="secondary" className="mb-2 bg-accent text-accent-foreground">
+                {s.tag}
+              </Badge>
+              <p className="insight-line text-sm leading-relaxed">{s.text}</p>
               <button className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline">
                 Aplicar sugerencia <ArrowUpRight className="h-3 w-3" />
               </button>
@@ -231,18 +351,21 @@ function Dashboard() {
 
 function Kpi({ icon: Icon, label, value, delta, highlight }: any) {
   return (
-    <div className={`relative overflow-hidden rounded-2xl border p-5 hover-lift ${highlight ? "border-primary/30 bg-gradient-primary text-primary-foreground" : "border-border bg-card"}`}>
-      {highlight && <div className="absolute inset-0 bg-gradient-mesh opacity-20" />}
+    <div
+      className={`relative overflow-hidden p-5 hover-lift ${highlight ? "surface-card border-primary/30" : "surface-card"}`}
+    >
       <div className="relative">
         <div className="flex items-center justify-between">
-          <div className={`flex h-9 w-9 items-center justify-center rounded-lg ${highlight ? "bg-white/15" : "bg-accent text-primary"}`}>
+          <div
+            className={`flex h-9 w-9 items-center justify-center rounded-lg ${highlight ? "bg-gradient-primary text-primary-foreground shadow-glow" : "bg-accent text-primary"}`}
+          >
             <Icon className="h-4 w-4" />
           </div>
-          <span className={`flex items-center gap-0.5 text-xs font-semibold ${highlight ? "text-primary-foreground/90" : "text-success"}`}>
+          <span className="flex items-center gap-0.5 text-xs font-semibold text-success">
             <ArrowUpRight className="h-3 w-3" /> {delta}
           </span>
         </div>
-        <p className={`mt-4 text-xs ${highlight ? "text-primary-foreground/80" : "text-muted-foreground"}`}>{label}</p>
+        <p className="mt-4 text-xs text-muted-foreground">{label}</p>
         <p className="mt-1 font-display text-3xl font-bold">{value}</p>
       </div>
     </div>
@@ -251,15 +374,17 @@ function Kpi({ icon: Icon, label, value, delta, highlight }: any) {
 
 function SmallStat({ label, value, sub }: { label: string; value: string; sub?: string }) {
   return (
-    <div className="rounded-xl border border-border bg-card px-4 py-3 hover-lift">
+    <div className="surface-card px-4 py-3 hover-lift">
       <p className="text-xs text-muted-foreground">{label}</p>
-      <p className="mt-1 font-display text-xl font-bold">{value} {sub && <span className="text-xs font-normal text-muted-foreground">{sub}</span>}</p>
+      <p className="mt-1 font-display text-xl font-bold">
+        {value} {sub && <span className="text-xs font-normal text-muted-foreground">{sub}</span>}
+      </p>
     </div>
   );
 }
 
 function Card({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return <div className={`rounded-2xl border border-border bg-card p-5 ${className}`}>{children}</div>;
+  return <div className={`surface-card p-5 ${className}`}>{children}</div>;
 }
 
 function CardHeader({ title, subtitle }: { title: React.ReactNode; subtitle: string }) {

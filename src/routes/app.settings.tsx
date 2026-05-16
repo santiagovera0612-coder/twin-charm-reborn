@@ -38,7 +38,7 @@ const DEFAULTS = {
   business: { name: "", industry: "muebles", website: "", country: "ar", tax_id: "", team_size: "2-10", description: "", hours: "" },
   agent: {
     name: "Sofía", role: "ventas", language: "es", tone: "friendly", creativity: 40,
-    welcome: "¡Hola! 👋 Soy tu asistente. Contame en qué te puedo ayudar.",
+    welcome: "¡Hola! Soy tu asistente. Contame en qué te puedo ayudar.",
     system_prompt: "• Sé claro y conciso.\n• No prometas lo que no podés cumplir.\n• Si dudás, derivá a un humano.",
     auto_handoff: true, proactive: true, emoji: false, learning: true,
     forbidden: "", max_messages: 50, response_time: "3 segundos", max_discount: "10%",

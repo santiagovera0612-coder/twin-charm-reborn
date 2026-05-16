@@ -42,7 +42,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         <h1 className="text-xl font-semibold">Algo salió mal</h1>
         <p className="mt-2 text-sm text-muted-foreground">{error.message}</p>
         <button
-          onClick={() => { router.invalidate(); reset(); }}
+          onClick={() => {
+            router.invalidate();
+            reset();
+          }}
           className="mt-6 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground"
         >
           Reintentar
@@ -58,16 +61,31 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Clerivo — Agentes de IA para tu negocio" },
-      { name: "description", content: "Creá tu agente de IA y respondé clientes 24/7 en WhatsApp, Instagram y tu web. Sin programar." },
+      {
+        name: "description",
+        content:
+          "Creá tu agente de IA y respondé clientes 24/7 en WhatsApp, Instagram y tu web. Sin programar.",
+      },
       { property: "og:title", content: "Clerivo — Agentes de IA para tu negocio" },
-      { property: "og:description", content: "Automatizá atención, ventas y seguimiento de clientes con agentes de IA entrenados con tu negocio." },
+      {
+        property: "og:description",
+        content:
+          "Automatizá atención, ventas y seguimiento de clientes con agentes de IA entrenados con tu negocio.",
+      },
       { property: "og:type", content: "website" },
     ],
     links: [
+      {
+        rel: "icon",
+        href: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232b65d9'/%3E%3Cpath d='M18 34.5 29 45l17-26' fill='none' stroke='white' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E",
+      },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -85,7 +103,10 @@ function RootShell({ children }: { children: React.ReactNode }) {
         <HeadContent />
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body>{children}<Scripts /></body>
+      <body>
+        {children}
+        <Scripts />
+      </body>
     </html>
   );
 }
@@ -94,7 +115,9 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router = useRouter();
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(() => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange(() => {
       router.invalidate();
       queryClient.invalidateQueries();
     });

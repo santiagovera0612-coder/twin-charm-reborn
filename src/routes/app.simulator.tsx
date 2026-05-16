@@ -11,17 +11,17 @@ export const Route = createFileRoute("/app/simulator")({
 type Msg = { id: string; role: "user" | "bot"; content: string };
 
 const initial: Msg[] = [
-  { id: "1", role: "bot", content: "¡Hola! Soy Sofía, asistente de Mueblería Norte 🛋️ ¿En qué puedo ayudarte hoy?" },
+  { id: "1", role: "bot", content: "¡Hola! Soy Sofía, asistente de Mueblería Norte. ¿En qué puedo ayudarte hoy?" },
 ];
 
 const suggestions = ["Hola, busco un sillón", "¿Hacen envíos?", "¿Qué medios de pago aceptan?", "Quiero agendar visita"];
 
 const responses: Record<string, string> = {
-  default: "¡Genial! Contame un poco más así te ayudo mejor 😊",
+  default: "¡Genial! Contame un poco más así te ayudo mejor.",
   sillon: "¡Perfecto! Tenemos varios modelos increíbles. ¿Buscás algo en particular?\n\n• Modular Bristol (3 cuerpos) — $489.000\n• Esquinero Oslo — $612.000\n• Rinconero Milano — $720.000\n\nTodos con envío gratis a CABA. ¿Querés ver fotos de alguno?",
-  envio: "Sí, hacemos envíos a todo el país 🚚\n\n• CABA y GBA: GRATIS en compras +$300.000\n• Interior: cotizamos según código postal\n\nEntrega coordinada en 3 a 7 días hábiles. ¿Te paso una cotización?",
-  pago: "Aceptamos:\n\n💳 Tarjetas en hasta 12 cuotas sin interés\n🏦 Transferencia (5% off)\n💵 Efectivo en local\n📱 Mercado Pago\n\n¿Te interesa alguna opción puntual?",
-  visita: "¡Claro! Estamos en Av. Libertador 4521, CABA. Horarios:\n\n🕐 Lunes a viernes: 10 a 19hs\n🕐 Sábados: 10 a 14hs\n\n¿Qué día te queda cómodo? Te tomo los datos y te confirmo turno.",
+  envio: "Sí, hacemos envíos a todo el país.\n\n• CABA y GBA: GRATIS en compras +$300.000\n• Interior: cotizamos según código postal\n\nEntrega coordinada en 3 a 7 días hábiles. ¿Te paso una cotización?",
+  pago: "Aceptamos:\n\n• Tarjetas en hasta 12 cuotas sin interés\n• Transferencia (5% off)\n• Efectivo en local\n• Mercado Pago\n\n¿Te interesa alguna opción puntual?",
+  visita: "¡Claro! Estamos en Av. Libertador 4521, CABA. Horarios:\n\n• Lunes a viernes: 10 a 19hs\n• Sábados: 10 a 14hs\n\n¿Qué día te queda cómodo? Te tomo los datos y te confirmo turno.",
 };
 
 function pickResponse(input: string) {
@@ -58,7 +58,7 @@ function Simulator() {
   return (
     <div className="grid h-[calc(100vh-4rem)] grid-cols-1 lg:grid-cols-[1fr_340px]">
       {/* Chat */}
-      <div className="flex flex-col bg-gradient-mesh">
+      <div className="flex flex-col product-shell">
         <div className="flex h-16 items-center justify-between border-b border-border bg-background/80 px-6 backdrop-blur-xl">
           <div className="flex items-center gap-3">
             <div className="relative">

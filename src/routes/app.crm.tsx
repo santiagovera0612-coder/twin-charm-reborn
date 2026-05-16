@@ -79,7 +79,7 @@ const seed: Customer[] = [
     intent: "alto",
   },
   {
-    id: "3", name: "Lucía Fernández", initials: "LF", color: "from-purple-500 to-indigo-500",
+    id: "3", name: "Lucía Fernández", initials: "LF", color: "from-[#8D6DFC] to-[#A78BFA]",
     email: "lucia.f@gmail.com", phone: "+34 678 221 109", channel: "web",
     stage: "nuevo", score: 64, value: 0, lastInteraction: "hace 3 h",
     tags: [
@@ -124,7 +124,7 @@ const seed: Customer[] = [
     intent: "bajo",
   },
   {
-    id: "7", name: "Isabel Marín", initials: "IM", color: "from-violet-500 to-purple-500",
+    id: "7", name: "Isabel Marín", initials: "IM", color: "from-[#8D6DFC] to-[#A78BFA]",
     email: "isa.marin@mail.com", phone: "+34 622 884 110", channel: "whatsapp",
     stage: "calificado", score: 81, value: 3200, lastInteraction: "hace 30 min",
     tags: [
